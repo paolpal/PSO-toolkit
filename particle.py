@@ -4,7 +4,7 @@ import algebric
 import random
 
 class Particle:
-    def __init__(self, inertia_weight, c1, c2, num_dimensions=None,problem=None):
+    def __init__(self, inertia_weight, c1, c2, num_dimensions=None,problem=None, verbose=False):
         if num_dimensions:
             self.num_dimensions = num_dimensions
             self.position = np.random.rand(num_dimensions)
@@ -15,6 +15,7 @@ class Particle:
         self.inertia_weight = inertia_weight
         self.c1 = c1
         self.c2 = c2
+        self.verbose = verbose
 
     def evaluate_fitness(self, problem):
         self.fitness = problem.evaluate(self.position)
@@ -31,11 +32,13 @@ class Particle:
 
     def update_position(self):
         # Aggiorna la posizione della particella
+        if self.verbose:
+            print(self.position)
         self.position = self.position + self.velocity
 
 class PermutationParticle(Particle):
-    def __init__(self, inertia_weight, c1, c2, num_dimensions, problem):
-        super().__init__(inertia_weight, c1, c2)
+    def __init__(self, inertia_weight, c1, c2, num_dimensions, problem, **kwargs):
+        super().__init__(inertia_weight, c1, c2, **kwargs)
         self.position = np.random.permutation(num_dimensions)+1
         self.velocity = np.random.permutation(num_dimensions)+1
         self.best_position = np.copy(self.position)
@@ -44,7 +47,7 @@ class PermutationParticle(Particle):
 
     def update_velocity(self, global_best_position):
         # Aggiorna la velocità della particella
-        inertia_term = algebric.mul(self.inertia_weight,self.velocity)
+        inertia_term = algebric.sub(algebric.mul(self.inertia_weight+1,self.velocity), self.velocity)
         r1 = np.random.rand()
         r2 = np.random.rand()
         #print(self.position)
@@ -63,4 +66,6 @@ class PermutationParticle(Particle):
 
     def update_position(self):
         # Aggiorna la posizione della particella
+        if self.verbose:
+            print(self.position)
         self.position = algebric.add(self.position, self.velocity)

@@ -68,8 +68,9 @@ def extend(a, p):
     a = min(a, a_x)
     k = math.ceil(a*l)
     z = p
-    for i in range(1,k-l):
+    for i in range(1,k-l-1):
         z = add(z, s[i])
+
     return z
 
 def mul(a, p):

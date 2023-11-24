@@ -4,8 +4,8 @@ from particle import PermutationParticle
 from pso import PSO
 
 class APSO(PSO):
-    def __init__(self, num_iterations, inertia_weight, c1, c2, num_particles=None, num_dimensions=None, problem=None):
-        super().__init__(num_iterations, inertia_weight, c1, c2)
+    def __init__(self, num_iterations, inertia_weight, c1, c2, num_particles=None, num_dimensions=None, problem=None, **kwargs):
+        super().__init__(num_iterations, inertia_weight, c1, c2, **kwargs)
         self.problem = problem
         self.num_particles = num_particles
         self.particles = [PermutationParticle(inertia_weight, c1, c2, num_dimensions, problem) for _ in range(num_particles)]
@@ -13,10 +13,10 @@ class APSO(PSO):
 
 # Esempio di utilizzo
 if __name__ == "__main__":
-    num_particles = 40
-    num_dimensions = 10
-    num_iterations = 200
-    inertia_weight = 0.5
+    num_particles = 50
+    num_dimensions = 40
+    num_iterations = 100
+    inertia_weight = 0.8
     c1, c2 = 2.0, 2.0
 
     # Inizializza la classe del problema
