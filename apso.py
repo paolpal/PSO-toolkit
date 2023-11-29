@@ -13,11 +13,11 @@ class APSO(PSO):
 
 # Esempio di utilizzo
 if __name__ == "__main__":
-    num_particles = 50
+    num_particles = 20
     num_dimensions = 40
-    num_iterations = 100
-    inertia_weight = 0.8
-    c1, c2 = 2.0, 2.0
+    num_iterations = 300
+    inertia_weight = 0.3
+    c1, c2 = .5, .9
 
     # Inizializza la classe del problema
     problem = ConvToE(num_dimensions)
