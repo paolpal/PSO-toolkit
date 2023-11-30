@@ -16,10 +16,16 @@ class PSO:
         # Inizializza la miglior posizione globale
             self.global_best_position = self.get_global_best_position()
 
+
+    def get_global_best_particle(self):
+        global_best_particle = min(self.particles, key=lambda particle: particle.fitness)
+        return global_best_particle
+     
     def get_global_best_position(self):
         # Trova la miglior posizione globale tra tutte le particelle
-        global_best_particle = min(self.particles, key=lambda particle: particle.fitness)
+        global_best_particle = self.get_global_best_particle()
         return np.copy(global_best_particle.position)
+
 
     def update_particles(self):
         for particle in self.particles:
@@ -38,11 +44,11 @@ class PSO:
                 self.global_best_position = np.copy(particle.position)
 
     def run(self):
-        for iteration in range(self.num_iterations):
+        for _ in range(self.num_iterations):
             self.update_particles()
 
             # Opzionale: Puoi stampare la miglior fitness ad ogni iterazione
-            print(f"Iteration {iteration + 1}, Best Fitness: {self.problem.evaluate(self.global_best_position)}")
+            #print(f"Iteration {iteration + 1}, Best Fitness: {self.problem.evaluate(self.global_best_position)}")
 
         # Restituisci la miglior posizione globale alla fine delle iterazioni
         return self.global_best_position, self.problem.evaluate(self.global_best_position)
