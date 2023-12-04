@@ -14,8 +14,7 @@ class MOPSO(PSO):
         self.particles = [Particle(inertia_weight, c1, c2, problem.n_var , problem) for _ in range(num_particles)]
             
         # Inizializza la miglior posizione globale
-        self.preferred_obj = preferred_obj if preferred_obj else None
-        
+        self.preferred_obj = preferred_obj
         self.global_best_position = self.get_global_best_position()
 
     def dominate(self, x_obj, y_obj):

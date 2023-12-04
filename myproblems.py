@@ -21,5 +21,17 @@ class ConvToE(Problem):
         dif = algebric.sub(position,e)
         s = algebric.randbs_decomposition(dif)
         return len(s)**2
+    
+
+class ConvToE2(MOProblem):
+    def __init__(self, n_var):
+        # Chiamiamo il costruttore della classe base con n_obj = 2
+        super().__init__(n_var=n_var, n_obj=1)
+
+    def evaluate(self, position):
+        e = list(range(1, len(position)+1))
+        dif = algebric.sub(position,e)
+        s = algebric.randbs_decomposition(dif)
+        return [len(s)**2]
 
 

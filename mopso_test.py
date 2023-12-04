@@ -1,13 +1,14 @@
 from myproblems import Schaffer1
 from mopso import MOPSO
+from amopso import AMOPSO
 import matplotlib.pyplot as plt
 
 n_particles = 40
 n_iterations = 400
-c1 = .75  # Coefficiente cognitivo
-c2 = 1.5  # Coefficiente sociale
+c1 = 1.5  # Coefficiente cognitivo
+c2 = 1.5 #1.5  # Coefficiente sociale
 w = .5   # Inerzia
-preferred_objective_index = 0  # Indice dell'obiettivo preferito
+preferred_objective_index = 4  # Indice dell'obiettivo preferito
 
 my_mo_problem = Schaffer1()
 
