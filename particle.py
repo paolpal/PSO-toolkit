@@ -1,3 +1,4 @@
+import copy
 import numpy as np
 import random
 
@@ -44,7 +45,8 @@ class PermutationParticle(Particle):
         self.velocity = np.random.permutation(num_dimensions)+1
         self.best_position = np.copy(self.position)
         self.fitness = problem.evaluate(self.position)
-        self.best_fitness = self.fitness.copy()
+        #self.best_fitness = self.fitness.copy()
+        self.best_fitness = copy.deepcopy(self.fitness)
 
 
     def update_velocity(self, global_best_position):
