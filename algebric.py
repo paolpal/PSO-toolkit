@@ -4,18 +4,18 @@ import math
 
 def compose_permutations(p1, p2):
     """Composizione di due permutazioni."""
-    return [p1[p2[i] - 1] for i in range(len(p1))]
+    return np.array([p1[p2[i] - 1] for i in range(len(p1))])
 
 def inverse_permutation(p):
     """Calcola l'inverso di una permutazione."""
     if isinstance(p, np.ndarray):
         p=p.tolist()
-    return [p.index(i + 1) + 1 for i in range(len(p))]
+    return np.array([p.index(i + 1) + 1 for i in range(len(p))])
 
 def swap_values(array, index):
     array_copy = array.copy()
     array_copy[index], array_copy[index + 1] = array_copy[index + 1], array_copy[index]
-    return array_copy
+    return np.array(array_copy)
 
 def update_A(A, All, i, p):
     n = len(p)-1

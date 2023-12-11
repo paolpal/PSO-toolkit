@@ -1,6 +1,6 @@
 import numpy as np
-from problem import Problem
-from particle import Particle
+from .problem import Problem
+from .particle import Particle
 
 class PSO:
     def __init__(self, num_iterations, inertia_weight, c1, c2, num_particles=None, num_dimensions=None, problem=None, **kwargs):

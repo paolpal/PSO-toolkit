@@ -1,7 +1,8 @@
 import numpy as np
-from myproblems import ConvToE2
-from particle import PermutationParticle
-from mopso import MOPSO
+
+from .myproblems import ConvToE2
+from .particle import PermutationParticle
+from .mopso import MOPSO
 
 class AMOPSO(MOPSO):
     def __init__(self, problem, num_particles, num_iterations, inertia_weight, c1, c2, preferred_obj=None, **kwargs):

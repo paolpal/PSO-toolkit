@@ -1,6 +1,6 @@
 import numpy as np
-import algebric
-from problem import MOProblem, Problem
+from .algebric import *
+from .problem import MOProblem, Problem
 
 class Schaffer1(MOProblem):
     def __init__(self):
@@ -18,8 +18,8 @@ class Schaffer1(MOProblem):
 class ConvToE(Problem):
     def evaluate(self, position):
         e = list(range(1, len(position)+1))
-        dif = algebric.sub(position,e)
-        s = algebric.randbs_decomposition(dif)
+        dif = sub(position,e)
+        s = randbs_decomposition(dif)
         return len(s)**2
     
 
@@ -30,8 +30,8 @@ class ConvToE2(MOProblem):
 
     def evaluate(self, position):
         e = list(range(1, len(position)+1))
-        dif = algebric.sub(position,e)
-        s = algebric.randbs_decomposition(dif)
+        dif = sub(position,e)
+        s = randbs_decomposition(dif)
         return [len(s)**2]
 
 
